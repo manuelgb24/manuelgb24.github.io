@@ -236,11 +236,12 @@
       <div class="links">
         <a class="btn" href="https://github.com/manuelgb24" target="_blank" rel="noopener">GitHub</a>
         <a class="btn" href="https://manuelgb24.github.io/auto-cv-n8n/" target="_blank" rel="noopener">Auto CV (Live)</a>
+        <a class="btn" href="https://manuelgb24.github.io/n8n_local_agent/" target="_blank" rel="noopener">n8n Local Agent (Live)</a>
       </div>
     </header>
 
     <div class="grid">
-      <!-- Featured project -->
+      <!-- Featured project: Auto CV -->
       <div class="featured">
         <div class="left">
           <h3>Auto CV Generator</h3>
@@ -257,6 +258,26 @@
         <div class="right">
           <a class="btn" href="https://manuelgb24.github.io/auto-cv-n8n/" target="_blank" rel="noopener">View Live Project</a>
           <a class="btn" href="https://github.com/manuelgb24/auto-cv-n8n" target="_blank" rel="noopener">View Source Code</a>
+        </div>
+      </div>
+
+      <!-- Featured project: n8n Local Agent -->
+      <div class="featured">
+        <div class="left">
+          <h3>n8n Local Agent</h3>
+          <p>
+            Local-first AI workflow engineering agent for n8n: governance prompt + MCP + skills + local LLM + phase-based workflow generation.
+          </p>
+          <div class="meta" style="margin-top:12px;">
+            <span class="tag">MCP</span>
+            <span class="tag">n8n Skills</span>
+            <span class="tag">Ollama</span>
+            <span class="tag">Whisper fallback</span>
+          </div>
+        </div>
+        <div class="right">
+          <a class="btn" href="https://manuelgb24.github.io/n8n_local_agent/" target="_blank" rel="noopener">View Live Project</a>
+          <a class="btn" href="https://github.com/manuelgb24/n8n_local_agent" target="_blank" rel="noopener">View Source Code</a>
         </div>
       </div>
     </div>
@@ -291,7 +312,6 @@
       const grid = document.getElementById("repoGrid");
 
       try{
-        // Fetch up to 100 repos (public). If you ever exceed 100, we can paginate.
         const url = `https://api.github.com/users/${USERNAME}/repos?per_page=100&sort=updated`;
         const res = await fetch(url, { headers: { "Accept": "application/vnd.github+json" }});
         if(!res.ok) throw new Error("GitHub API error");
@@ -347,6 +367,4 @@
     loadRepos();
   </script>
 </body>
-</html> 
-
-
+</html>
