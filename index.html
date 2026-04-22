@@ -2,362 +2,989 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
   <title>Manuel González Balayo | Portfolio</title>
-  <meta name="description" content="Project portfolio of Manuel González Balayo. Automation systems, AI workflows, and data tools."/>
+  <meta name="description" content="Project portfolio of Manuel González Balayo. Automation systems, AI workflows, n8n projects, and data tools." />
   <style>
-    :root{
-      --bg:#0b0f17;
-      --card:#121a2a;
-      --text:#eaf0ff;
-      --muted:#a9b4d0;
-      --accent:#7aa2ff;
-      --border:rgba(255,255,255,.08);
+    :root {
+      --bg: #f6f8fc;
+      --bg-strong: #eef4ff;
+      --surface: rgba(255, 255, 255, 0.86);
+      --surface-solid: #ffffff;
+      --ink: #0f172a;
+      --muted: #526178;
+      --soft: #8290a6;
+      --line: #dce5f2;
+      --line-strong: #cbd7e8;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --blue-soft: #dbeafe;
+      --cyan-soft: #e0f7ff;
+      --green-soft: #dcfce7;
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.10);
+      --shadow-soft: 0 14px 40px rgba(15, 23, 42, 0.08);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+      --max: 1120px;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(122,162,255,.25), transparent 60%),
-                  radial-gradient(900px 500px at 80% 10%, rgba(120,255,214,.12), transparent 60%),
-                  var(--bg);
-      color:var(--text);
-      min-height:100vh;
+
+    * {
+      box-sizing: border-box;
     }
-    .wrap{
-      max-width: 980px;
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% -10%, rgba(37, 99, 235, 0.18), transparent 34rem),
+        radial-gradient(circle at 92% 8%, rgba(14, 165, 233, 0.14), transparent 30rem),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 44%, #f8fafc 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 14px;
+      left: 14px;
+      z-index: 20;
+      transform: translateY(-140%);
+      border-radius: 999px;
+      background: var(--ink);
+      color: #ffffff;
+      padding: 10px 14px;
+      font-size: 14px;
+      text-decoration: none;
+      transition: transform 180ms ease;
+    }
+
+    .skip-link:focus-visible {
+      transform: translateY(0);
+      outline: 3px solid rgba(37, 99, 235, 0.35);
+      outline-offset: 3px;
+    }
+
+    .page-shell {
+      width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
-      padding: 52px 18px 70px;
+      padding: 34px 0 56px;
     }
-    header{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:18px;
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border: 1px solid rgba(37, 99, 235, 0.22);
+      border-radius: 14px;
+      background: linear-gradient(135deg, #ffffff, var(--blue-soft));
+      color: var(--blue-dark);
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.14);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .nav-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 15px;
+      background: rgba(255, 255, 255, 0.78);
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+      transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+      touch-action: manipulation;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
+      background: #ffffff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .button-primary {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: #ffffff;
+      box-shadow: 0 16px 34px rgba(37, 99, 235, 0.26);
+    }
+
+    .button-primary:hover {
+      border-color: var(--blue-dark);
+      background: var(--blue-dark);
+    }
+
+    .button:focus-visible,
+    .project-link:focus-visible,
+    .repo-card:focus-within,
+    .brand:focus-visible {
+      outline: 3px solid rgba(37, 99, 235, 0.28);
+      outline-offset: 4px;
+    }
+
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .panel {
+      position: relative;
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid rgba(203, 215, 232, 0.84);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-card {
+      grid-column: span 8;
+      padding: clamp(26px, 4vw, 46px);
+      min-height: 390px;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      right: -90px;
+      bottom: -130px;
+      width: 310px;
+      height: 310px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.18), transparent 68%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin: 0 0 18px;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      border-radius: 999px;
+      padding: 7px 11px;
+      background: #eff6ff;
+      color: var(--blue-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 18px;
+      font-size: clamp(42px, 7vw, 78px);
+      line-height: 0.94;
+      letter-spacing: -0.075em;
+      text-wrap: balance;
+    }
+
+    .hero-copy {
+      max-width: 680px;
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 20px);
+      line-height: 1.65;
+      text-wrap: pretty;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
       margin-bottom: 26px;
     }
-    .title{
-      margin:0;
-      font-size: 42px;
-      letter-spacing: -0.02em;
-      line-height:1.1;
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
     }
-    .subtitle{
-      margin:10px 0 0;
-      color:var(--muted);
-      font-size:16px;
-      max-width: 62ch;
-    }
-    .pillbar{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:16px;
-    }
-    .pill{
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      color: var(--muted);
-      padding: 7px 10px;
+
+    .pill,
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-width: 0;
+      border: 1px solid var(--line);
       border-radius: 999px;
-      font-size: 13px;
-    }
-    .links{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      margin-top: 6px;
-    }
-    a.btn{
-      text-decoration:none;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 12px;
-      font-size: 14px;
-      transition: transform .12s ease, border-color .12s ease, background .12s ease;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-    }
-    a.btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(122,162,255,.45);
-      background: rgba(122,162,255,.08);
-    }
-
-    .sectionhead{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:14px;
-      margin-top: 28px;
-      margin-bottom: 14px;
-    }
-    .sectionhead h2{
-      margin:0;
-      font-size: 18px;
-      letter-spacing:.02em;
-      text-transform: uppercase;
-      color: rgba(234,240,255,.9);
-    }
-    .smallmuted{
+      background: rgba(255, 255, 255, 0.70);
       color: var(--muted);
-      font-size: 14px;
+      font-size: 12px;
+      font-weight: 750;
+      line-height: 1;
+      white-space: nowrap;
     }
 
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
+    .pill {
+      padding: 8px 10px;
     }
-    .card{
-      grid-column: span 6;
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border-radius: 18px;
-      padding: 16px 16px 14px;
-      transition: transform .12s ease, border-color .12s ease;
-      min-height: 140px;
-      position: relative;
-      overflow:hidden;
+
+    .tag {
+      padding: 7px 9px;
     }
-    .card:hover{
-      transform: translateY(-2px);
-      border-color: rgba(122,162,255,.35);
+
+    .sync-card {
+      grid-column: span 4;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 26px;
+      background:
+        linear-gradient(135deg, rgba(219, 234, 254, 0.82), rgba(255, 255, 255, 0.84)),
+        var(--surface-solid);
     }
-    .card h3{
-      margin: 0 0 8px;
-      font-size: 18px;
-      letter-spacing: -0.01em;
+
+    .sync-card h2 {
+      margin-bottom: 10px;
+      font-size: clamp(24px, 3vw, 34px);
+      letter-spacing: -0.045em;
+      line-height: 1;
+      text-wrap: balance;
     }
-    .desc{
-      margin: 0 0 12px;
+
+    .sync-card p,
+    .section-intro,
+    .feature-copy,
+    .repo-desc,
+    .footer p {
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .sync-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
       color: var(--muted);
       font-size: 14px;
       line-height: 1.45;
-      min-height: 40px;
     }
-    .meta{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      color: rgba(234,240,255,.75);
-      font-size: 12px;
+
+    .sync-list li {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
     }
-    .tag{
-      border:1px solid var(--border);
-      padding: 5px 8px;
+
+    .sync-list li::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 8px;
+      height: 8px;
+      margin-top: 6px;
       border-radius: 999px;
-      background: rgba(0,0,0,.15);
-    }
-    .cardlinks{
-      margin-top: 12px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .cardlinks a{
-      color: var(--accent);
-      text-decoration:none;
-      font-size: 13px;
-      border-bottom: 1px solid rgba(122,162,255,.35);
-      padding-bottom:2px;
-    }
-    .cardlinks a:hover{
-      border-bottom-color: rgba(122,162,255,.9);
+      background: var(--blue);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.11);
     }
 
-    .featured{
-      grid-column: span 12;
-      display:flex;
-      align-items:stretch;
-      gap: 14px;
-      padding: 18px;
-      border-radius: 22px;
-      border: 1px solid rgba(122,162,255,.25);
-      background: linear-gradient(135deg, rgba(122,162,255,.14), rgba(255,255,255,.03));
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
     }
-    .featured .left{
-      flex: 1;
-      min-width: 240px;
+
+    .stat {
+      border: 1px solid rgba(203, 215, 232, 0.74);
+      border-radius: 18px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.64);
     }
-    .featured .right{
-      min-width: 240px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      gap:10px;
-      align-items:flex-start;
+
+    .stat strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--ink);
+      font-size: 24px;
+      letter-spacing: -0.04em;
+      font-variant-numeric: tabular-nums;
     }
-    .featured h3{
-      margin:0 0 8px;
-      font-size: 22px;
-    }
-    .featured p{
-      margin:0;
+
+    .stat span {
       color: var(--muted);
-      line-height:1.5;
-      font-size: 14px;
-    }
-
-    .footer{
-      margin-top: 28px;
-      color: rgba(234,240,255,.6);
       font-size: 12px;
+      font-weight: 700;
     }
 
-    @media (max-width: 820px){
-      .card{ grid-column: span 12; }
-      header{ flex-direction:column; }
-      .links{ justify-content:flex-start; }
-      .title{ font-size: 34px; }
-      .featured{ flex-direction:column; }
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin: 46px 0 16px;
+    }
+
+    .section-header h2 {
+      margin-bottom: 7px;
+      font-size: clamp(25px, 3vw, 38px);
+      letter-spacing: -0.055em;
+      line-height: 1.03;
+      text-wrap: balance;
+    }
+
+    .section-intro {
+      max-width: 680px;
+      margin-bottom: 0;
+      font-size: 15px;
+    }
+
+    .status {
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 12px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      display: flex;
+      min-width: 0;
+      min-height: 310px;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 22px;
+      border: 1px solid rgba(203, 215, 232, 0.84);
+      border-radius: var(--radius-lg);
+      padding: clamp(22px, 3vw, 34px);
+      background: var(--surface-solid);
+      box-shadow: var(--shadow-soft);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(37, 99, 235, 0.32);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-primary {
+      grid-column: span 7;
+      background:
+        linear-gradient(135deg, rgba(37, 99, 235, 0.08), transparent 44%),
+        linear-gradient(180deg, #ffffff, #f8fbff);
+    }
+
+    .feature-secondary {
+      grid-column: span 5;
+      background:
+        linear-gradient(135deg, rgba(14, 165, 233, 0.10), transparent 44%),
+        linear-gradient(180deg, #ffffff, #f8fbff);
+    }
+
+    .feature-kicker {
+      margin-bottom: 12px;
+      color: var(--blue-dark);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 12px;
+      font-size: clamp(26px, 3vw, 42px);
+      line-height: 1;
+      letter-spacing: -0.055em;
+      text-wrap: balance;
+    }
+
+    .feature-copy {
+      max-width: 660px;
+      margin-bottom: 18px;
+      font-size: 15px;
+    }
+
+    .feature-actions,
+    .repo-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .repo-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .repo-card {
+      grid-column: span 4;
+      display: flex;
+      min-width: 0;
+      min-height: 248px;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      border: 1px solid rgba(203, 215, 232, 0.84);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.84);
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+      content-visibility: auto;
+      contain-intrinsic-size: 248px;
+    }
+
+    .repo-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(37, 99, 235, 0.28);
+      background: #ffffff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .repo-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .repo-card h3 {
+      min-width: 0;
+      margin-bottom: 10px;
+      overflow-wrap: anywhere;
+      font-size: 19px;
+      line-height: 1.18;
+      letter-spacing: -0.035em;
+    }
+
+    .repo-desc {
+      display: -webkit-box;
+      min-height: 68px;
+      margin-bottom: 0;
+      overflow: hidden;
+      font-size: 14px;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+
+    .repo-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      border-bottom: 1px solid rgba(37, 99, 235, 0.28);
+      color: var(--blue-dark);
+      font-size: 14px;
+      font-weight: 850;
+      text-decoration: none;
+      transition: border-color 180ms ease, color 180ms ease;
+    }
+
+    .project-link:hover {
+      border-color: var(--blue-dark);
+      color: #173ea5;
+    }
+
+    .empty-state,
+    .error-state {
+      grid-column: 1 / -1;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      background: #ffffff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .empty-state h3,
+    .error-state h3 {
+      margin-bottom: 8px;
+      font-size: 22px;
+      letter-spacing: -0.04em;
+    }
+
+    .skeleton {
+      min-height: 248px;
+      overflow: hidden;
+    }
+
+    .skeleton-line {
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #e9eef7, #f7f9fc, #e9eef7);
+      background-size: 220% 100%;
+      animation: shimmer 1.3s ease-in-out infinite;
+    }
+
+    .skeleton-line.title {
+      width: 64%;
+      height: 18px;
+      margin-bottom: 20px;
+    }
+
+    .skeleton-line.copy {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .skeleton-line.copy.short {
+      width: 72%;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 42px;
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer p {
+      margin-bottom: 0;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 120% 0; }
+      100% { background-position: -120% 0; }
+    }
+
+    @media (max-width: 940px) {
+      .hero-card,
+      .sync-card,
+      .feature-primary,
+      .feature-secondary {
+        grid-column: 1 / -1;
+      }
+
+      .hero-card {
+        min-height: auto;
+      }
+
+      .repo-card {
+        grid-column: span 6;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .page-shell {
+        width: min(100% - 22px, var(--max));
+        padding-top: 18px;
+      }
+
+      .topbar,
+      .section-header,
+      .footer {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .nav-actions,
+      .hero-actions,
+      .feature-actions,
+      .repo-actions {
+        width: 100%;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-card,
+      .sync-card,
+      .feature-card {
+        border-radius: 22px;
+        padding: 22px;
+      }
+
+      h1 {
+        letter-spacing: -0.06em;
+      }
+
+      .stat-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .repo-card {
+        grid-column: 1 / -1;
+      }
+
+      .status {
+        width: fit-content;
+        white-space: normal;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div>
-        <h1 class="title">Portfolio</h1>
-        <p class="subtitle">Projects I build and ship on GitHub. This page updates automatically when new repos are created.</p>
-        <div class="pillbar">
-          <span class="pill">Automation</span>
-          <span class="pill">AI workflows</span>
-          <span class="pill">Data systems</span>
-          <span class="pill">n8n</span>
-          <span class="pill">Python</span>
-        </div>
-      </div>
+  <a class="skip-link" href="#projects">Skip to Projects</a>
 
-      <div class="links">
-        <a class="btn" href="https://github.com/manuelgb24" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="https://manuelgb24.github.io/auto-cv-n8n/" target="_blank" rel="noopener">Auto CV (Live)</a>
-        <a class="btn" href="https://manuelgb24.github.io/n8n_local_agent/" target="_blank" rel="noopener">n8n Local Agent (Live)</a>
-      </div>
+  <div class="page-shell">
+    <header class="topbar" aria-label="Portfolio header">
+      <a class="brand" href="https://github.com/manuelgb24" target="_blank" rel="noopener" aria-label="Open Manuel González Balayo on GitHub">
+        <span class="brand-mark" aria-hidden="true">MGB</span>
+        <span>Manuel González Balayo</span>
+      </a>
+
+      <nav class="nav-actions" aria-label="Primary links">
+        <a class="button" href="https://github.com/manuelgb24" target="_blank" rel="noopener">GitHub</a>
+        <a class="button" href="https://manuelgb24.github.io/auto-cv-n8n/" target="_blank" rel="noopener">Auto CV Live</a>
+        <a class="button" href="https://manuelgb24.github.io/n8n_local_agent/" target="_blank" rel="noopener">n8n Agent Live</a>
+      </nav>
     </header>
 
-    <div class="grid">
-      <!-- Featured project: Auto CV -->
-      <div class="featured">
-        <div class="left">
-          <h3>Auto CV Generator</h3>
-          <p>
-            End-to-end workflow that turns job descriptions into tailored CVs and generates ATS-ready PDFs automatically.
+    <main>
+      <section class="bento" aria-labelledby="hero-title">
+        <div class="panel hero-card">
+          <p class="eyebrow">Automation · AI Workflows · Data Systems</p>
+          <h1 id="hero-title">Building practical AI automation projects.</h1>
+          <p class="hero-copy">
+            A live portfolio of projects focused on workflow automation, local-first AI tooling, document generation, and data systems. New public GitHub repositories are pulled into this page automatically.
           </p>
-          <div class="meta" style="margin-top:12px;">
-            <span class="tag">n8n</span>
-            <span class="tag">Local LLM</span>
-            <span class="tag">PDF Rendering</span>
-            <span class="tag">Prompt Logic</span>
+          <div class="hero-actions" aria-label="Featured calls to action">
+            <a class="button button-primary" href="#projects">View Projects</a>
+            <a class="button" href="https://github.com/manuelgb24" target="_blank" rel="noopener">Open GitHub Profile</a>
+          </div>
+          <div class="pill-row" aria-label="Core skills">
+            <span class="pill">n8n</span>
+            <span class="pill">Python</span>
+            <span class="pill">Local LLMs</span>
+            <span class="pill">MCP</span>
+            <span class="pill">PDF Automation</span>
+            <span class="pill">Data Workflows</span>
           </div>
         </div>
-        <div class="right">
-          <a class="btn" href="https://manuelgb24.github.io/auto-cv-n8n/" target="_blank" rel="noopener">View Live Project</a>
-          <a class="btn" href="https://github.com/manuelgb24/auto-cv-n8n" target="_blank" rel="noopener">View Source Code</a>
-        </div>
-      </div>
 
-      <!-- Featured project: n8n Local Agent -->
-      <div class="featured">
-        <div class="left">
-          <h3>n8n Local Agent</h3>
-          <p>
-            Local-first AI workflow engineering agent for n8n: governance prompt + MCP + skills + local LLM + phase-based workflow generation.
-          </p>
-          <div class="meta" style="margin-top:12px;">
-            <span class="tag">MCP</span>
-            <span class="tag">n8n Skills</span>
-            <span class="tag">Ollama</span>
-            <span class="tag">Whisper fallback</span>
+        <aside class="panel sync-card" aria-labelledby="sync-title">
+          <div>
+            <p class="eyebrow">Auto-sync Portfolio</p>
+            <h2 id="sync-title">Always updated from GitHub.</h2>
+            <p>
+              The project grid below reads public repositories directly from the GitHub API. Create a new public repo, refresh this page, and it can appear automatically.
+            </p>
+          </div>
+          <ul class="sync-list">
+            <li>Filters out forks, archived repos, and the website repository.</li>
+            <li>Sorts projects by latest GitHub activity.</li>
+            <li>Shows language, update date, stars, and repository links.</li>
+          </ul>
+          <div class="stat-grid" aria-label="Portfolio stats">
+            <div class="stat">
+              <strong id="repoCount">—</strong>
+              <span>Loaded repos</span>
+            </div>
+            <div class="stat">
+              <strong>2</strong>
+              <span>Featured builds</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section aria-labelledby="featured-title">
+        <div class="section-header">
+          <div>
+            <h2 id="featured-title">Featured Work</h2>
+            <p class="section-intro">A quick look at the two main projects behind this portfolio.</p>
           </div>
         </div>
-        <div class="right">
-          <a class="btn" href="https://manuelgb24.github.io/n8n_local_agent/" target="_blank" rel="noopener">View Live Project</a>
-          <a class="btn" href="https://github.com/manuelgb24/n8n_local_agent" target="_blank" rel="noopener">View Source Code</a>
+
+        <div class="featured-grid">
+          <article class="feature-card feature-primary">
+            <div>
+              <p class="feature-kicker">Featured Project</p>
+              <h3>Auto CV Generator</h3>
+              <p class="feature-copy">
+                End-to-end workflow that turns job descriptions into tailored CVs and generates ATS-ready PDFs automatically.
+              </p>
+              <div class="pill-row" aria-label="Auto CV technologies">
+                <span class="tag">n8n</span>
+                <span class="tag">Local LLM</span>
+                <span class="tag">PDF Rendering</span>
+                <span class="tag">Prompt Logic</span>
+              </div>
+            </div>
+            <div class="feature-actions">
+              <a class="button button-primary" href="https://manuelgb24.github.io/auto-cv-n8n/" target="_blank" rel="noopener">View Live Project</a>
+              <a class="button" href="https://github.com/manuelgb24/auto-cv-n8n" target="_blank" rel="noopener">View Source Code</a>
+            </div>
+          </article>
+
+          <article class="feature-card feature-secondary">
+            <div>
+              <p class="feature-kicker">Featured Project</p>
+              <h3>n8n Local Agent</h3>
+              <p class="feature-copy">
+                Local-first AI workflow engineering agent for n8n: governance prompt, MCP, skills, local LLMs, and phase-based workflow generation.
+              </p>
+              <div class="pill-row" aria-label="n8n Local Agent technologies">
+                <span class="tag">MCP</span>
+                <span class="tag">n8n Skills</span>
+                <span class="tag">Ollama</span>
+                <span class="tag">Whisper fallback</span>
+              </div>
+            </div>
+            <div class="feature-actions">
+              <a class="button button-primary" href="https://manuelgb24.github.io/n8n_local_agent/" target="_blank" rel="noopener">View Live Project</a>
+              <a class="button" href="https://github.com/manuelgb24/n8n_local_agent" target="_blank" rel="noopener">View Source Code</a>
+            </div>
+          </article>
         </div>
-      </div>
-    </div>
+      </section>
 
-    <div class="sectionhead">
-      <h2>All GitHub Projects</h2>
-      <div class="smallmuted" id="status">Loading repositories…</div>
-    </div>
+      <section id="projects" aria-labelledby="projects-title">
+        <div class="section-header">
+          <div>
+            <h2 id="projects-title">All GitHub Projects</h2>
+            <p class="section-intro">
+              This section is generated automatically from public GitHub repositories. New projects appear here after they are created on GitHub and the page is refreshed.
+            </p>
+          </div>
+          <div class="status" id="status" role="status" aria-live="polite">Loading repositories…</div>
+        </div>
 
-    <div class="grid" id="repoGrid"></div>
+        <div class="repo-grid" id="repoGrid" aria-label="GitHub repositories">
+          <article class="repo-card skeleton" aria-hidden="true">
+            <div>
+              <div class="skeleton-line title"></div>
+              <div class="skeleton-line copy"></div>
+              <div class="skeleton-line copy"></div>
+              <div class="skeleton-line copy short"></div>
+            </div>
+          </article>
+          <article class="repo-card skeleton" aria-hidden="true">
+            <div>
+              <div class="skeleton-line title"></div>
+              <div class="skeleton-line copy"></div>
+              <div class="skeleton-line copy"></div>
+              <div class="skeleton-line copy short"></div>
+            </div>
+          </article>
+          <article class="repo-card skeleton" aria-hidden="true">
+            <div>
+              <div class="skeleton-line title"></div>
+              <div class="skeleton-line copy"></div>
+              <div class="skeleton-line copy"></div>
+              <div class="skeleton-line copy short"></div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
 
+    <footer class="footer">
+      <p>© <span id="year"></span> Manuel González Balayo. Built as a single-file portfolio.</p>
+      <p>Projects update from GitHub automatically.</p>
+    </footer>
   </div>
 
   <script>
     const USERNAME = "manuelgb24";
     const EXCLUDE = new Set([
-      `${USERNAME}.github.io`.toLowerCase() // don't list the website repo
+      `${USERNAME}.github.io`.toLowerCase()
     ]);
 
-    function fmtDate(iso){
-      try{
-        const d = new Date(iso);
-        return d.toLocaleDateString(undefined, {year:"numeric", month:"short"});
-      }catch(e){ return ""; }
+    const statusEl = document.getElementById("status");
+    const gridEl = document.getElementById("repoGrid");
+    const repoCountEl = document.getElementById("repoCount");
+    const yearEl = document.getElementById("year");
+
+    yearEl.textContent = new Date().getFullYear();
+
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#039;"
+      }[char]));
     }
 
-    async function loadRepos(){
-      const status = document.getElementById("status");
-      const grid = document.getElementById("repoGrid");
+    function formatDate(iso) {
+      try {
+        return new Intl.DateTimeFormat(undefined, {
+          year: "numeric",
+          month: "short"
+        }).format(new Date(iso));
+      } catch (error) {
+        return "Recently";
+      }
+    }
 
-      try{
+    function repoTags(repo) {
+      const tags = [];
+
+      if (repo.language) {
+        tags.push(`<span class="tag" translate="no">${escapeHTML(repo.language)}</span>`);
+      }
+
+      if (repo.updated_at) {
+        tags.push(`<span class="tag">Updated ${escapeHTML(formatDate(repo.updated_at))}</span>`);
+      }
+
+      if (typeof repo.stargazers_count === "number") {
+        tags.push(`<span class="tag">Stars ${repo.stargazers_count}</span>`);
+      }
+
+      return tags.join("");
+    }
+
+    function renderRepo(repo) {
+      const name = escapeHTML(repo.name || "Untitled project");
+      const description = escapeHTML(repo.description || "No description yet. Open the repository to learn more about this project.");
+      const repoUrl = escapeHTML(repo.html_url || `https://github.com/${USERNAME}`);
+      const homepage = repo.homepage ? String(repo.homepage).trim() : "";
+      const homepageLink = homepage
+        ? `<a class="project-link" href="${escapeHTML(homepage)}" target="_blank" rel="noopener">Open Live Site</a>`
+        : "";
+
+      return `
+        <article class="repo-card">
+          <div>
+            <div class="repo-top">
+              <h3 translate="no">${name}</h3>
+            </div>
+            <p class="repo-desc">${description}</p>
+          </div>
+          <div>
+            <div class="repo-meta" aria-label="Repository metadata">
+              ${repoTags(repo)}
+            </div>
+            <div class="repo-actions" style="margin-top: 16px;">
+              <a class="project-link" href="${repoUrl}" target="_blank" rel="noopener">Open Repository</a>
+              ${homepageLink}
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    async function loadRepos() {
+      try {
         const url = `https://api.github.com/users/${USERNAME}/repos?per_page=100&sort=updated`;
-        const res = await fetch(url, { headers: { "Accept": "application/vnd.github+json" }});
-        if(!res.ok) throw new Error("GitHub API error");
-        const repos = await res.json();
+        const response = await fetch(url, {
+          headers: {
+            "Accept": "application/vnd.github+json"
+          }
+        });
 
-        const clean = repos
-          .filter(r => !r.fork)
-          .filter(r => !r.archived)
-          .filter(r => !EXCLUDE.has((r.name || "").toLowerCase()))
-          .sort((a,b) => new Date(b.updated_at) - new Date(a.updated_at));
+        if (!response.ok) {
+          throw new Error(`GitHub API responded with ${response.status}`);
+        }
 
-        status.textContent = `${clean.length} repositories`;
+        const repos = await response.json();
+        const cleanRepos = repos
+          .filter((repo) => !repo.fork)
+          .filter((repo) => !repo.archived)
+          .filter((repo) => !EXCLUDE.has(String(repo.name || "").toLowerCase()))
+          .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
 
-        if(clean.length === 0){
-          grid.innerHTML = `<div class="card" style="grid-column: span 12;">
-            <h3>No public repos found</h3>
-            <p class="desc">Create a repo on GitHub and it will show up here automatically.</p>
-          </div>`;
+        repoCountEl.textContent = cleanRepos.length;
+        statusEl.textContent = `${cleanRepos.length} repositories loaded`;
+
+        if (cleanRepos.length === 0) {
+          gridEl.innerHTML = `
+            <div class="empty-state">
+              <h3>No public repositories found</h3>
+              <p class="repo-desc">Create a public GitHub repository and refresh this page. It will show up here automatically.</p>
+            </div>
+          `;
           return;
         }
 
-        grid.innerHTML = clean.map(r => {
-          const desc = (r.description || "No description yet.").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-          const lang = r.language ? `<span class="tag">${r.language}</span>` : "";
-          const updated = r.updated_at ? `<span class="tag">Updated ${fmtDate(r.updated_at)}</span>` : "";
-          const stars = typeof r.stargazers_count === "number" ? `<span class="tag">★ ${r.stargazers_count}</span>` : "";
-
-          return `
-            <div class="card">
-              <h3>${r.name}</h3>
-              <p class="desc">${desc}</p>
-              <div class="meta">
-                ${lang}
-                ${updated}
-                ${stars}
-              </div>
-              <div class="cardlinks">
-                <a href="${r.html_url}" target="_blank" rel="noopener">Repo</a>
-              </div>
+        gridEl.innerHTML = cleanRepos.map(renderRepo).join("");
+      } catch (error) {
+        repoCountEl.textContent = "—";
+        statusEl.textContent = "Could not load repositories";
+        gridEl.innerHTML = `
+          <div class="error-state">
+            <h3>GitHub repositories did not load</h3>
+            <p class="repo-desc">GitHub may be rate-limiting this request. Refresh the page in a moment, or open the GitHub profile directly.</p>
+            <div class="repo-actions" style="margin-top: 16px;">
+              <a class="button button-primary" href="https://github.com/${USERNAME}" target="_blank" rel="noopener">Open GitHub Profile</a>
             </div>
-          `;
-        }).join("");
-      }catch(err){
-        status.textContent = "Couldn’t load repositories (refresh in a moment).";
-        grid.innerHTML = `<div class="card" style="grid-column: span 12;">
-          <h3>GitHub API didn’t respond</h3>
-          <p class="desc">Sometimes GitHub rate-limits requests. Refresh the page in 30 seconds.</p>
-          <div class="cardlinks"><a href="https://github.com/${USERNAME}" target="_blank" rel="noopener">Open GitHub profile</a></div>
-        </div>`;
+          </div>
+        `;
       }
     }
 
