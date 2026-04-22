@@ -9,24 +9,19 @@
   <style>
     :root {
       --bg: #f6f8fc;
-      --bg-strong: #eef4ff;
       --surface: rgba(255, 255, 255, 0.86);
       --surface-solid: #ffffff;
       --ink: #0f172a;
       --muted: #526178;
-      --soft: #8290a6;
       --line: #dce5f2;
       --line-strong: #cbd7e8;
       --blue: #2563eb;
       --blue-dark: #1d4ed8;
       --blue-soft: #dbeafe;
-      --cyan-soft: #e0f7ff;
-      --green-soft: #dcfce7;
       --shadow: 0 24px 80px rgba(15, 23, 42, 0.10);
       --shadow-soft: 0 14px 40px rgba(15, 23, 42, 0.08);
       --radius-lg: 28px;
       --radius-md: 20px;
-      --radius-sm: 14px;
       --max: 1120px;
     }
 
@@ -44,8 +39,8 @@
       overflow-x: hidden;
       color: var(--ink);
       background:
-        radial-gradient(circle at 10% -10%, rgba(37, 99, 235, 0.18), transparent 34rem),
-        radial-gradient(circle at 92% 8%, rgba(14, 165, 233, 0.14), transparent 30rem),
+        radial-gradient(circle at 10% -10%, rgba(37, 99, 235, 0.16), transparent 34rem),
+        radial-gradient(circle at 92% 8%, rgba(14, 165, 233, 0.12), transparent 30rem),
         linear-gradient(180deg, #ffffff 0%, var(--bg) 44%, #f8fafc 100%);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
@@ -88,7 +83,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      margin-bottom: 24px;
+      margin-bottom: 34px;
     }
 
     .brand {
@@ -169,201 +164,11 @@
       outline-offset: 4px;
     }
 
-    .bento {
-      display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .panel {
-      position: relative;
-      min-width: 0;
-      overflow: hidden;
-      border: 1px solid rgba(203, 215, 232, 0.84);
-      border-radius: var(--radius-lg);
-      background: var(--surface);
-      box-shadow: var(--shadow-soft);
-      backdrop-filter: blur(18px);
-    }
-
-    .hero-card {
-      grid-column: span 8;
-      padding: clamp(26px, 4vw, 46px);
-      min-height: 390px;
-    }
-
-    .hero-card::after {
-      content: "";
-      position: absolute;
-      right: -90px;
-      bottom: -130px;
-      width: 310px;
-      height: 310px;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.18), transparent 68%);
-      pointer-events: none;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      width: fit-content;
-      margin: 0 0 18px;
-      border: 1px solid rgba(37, 99, 235, 0.18);
-      border-radius: 999px;
-      padding: 7px 11px;
-      background: #eff6ff;
-      color: var(--blue-dark);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
     h1,
     h2,
     h3,
     p {
       margin-top: 0;
-    }
-
-    h1 {
-      max-width: 760px;
-      margin-bottom: 18px;
-      font-size: clamp(42px, 7vw, 78px);
-      line-height: 0.94;
-      letter-spacing: -0.075em;
-      text-wrap: balance;
-    }
-
-    .hero-copy {
-      max-width: 680px;
-      margin-bottom: 24px;
-      color: var(--muted);
-      font-size: clamp(17px, 2vw, 20px);
-      line-height: 1.65;
-      text-wrap: pretty;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 26px;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .pill,
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      min-width: 0;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.70);
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 750;
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    .pill {
-      padding: 8px 10px;
-    }
-
-    .tag {
-      padding: 7px 9px;
-    }
-
-    .sync-card {
-      grid-column: span 4;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 26px;
-      background:
-        linear-gradient(135deg, rgba(219, 234, 254, 0.82), rgba(255, 255, 255, 0.84)),
-        var(--surface-solid);
-    }
-
-    .sync-card h2 {
-      margin-bottom: 10px;
-      font-size: clamp(24px, 3vw, 34px);
-      letter-spacing: -0.045em;
-      line-height: 1;
-      text-wrap: balance;
-    }
-
-    .sync-card p,
-    .section-intro,
-    .feature-copy,
-    .repo-desc,
-    .footer p {
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .sync-list {
-      display: grid;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.45;
-    }
-
-    .sync-list li {
-      display: flex;
-      gap: 9px;
-      align-items: flex-start;
-    }
-
-    .sync-list li::before {
-      content: "";
-      flex: 0 0 auto;
-      width: 8px;
-      height: 8px;
-      margin-top: 6px;
-      border-radius: 999px;
-      background: var(--blue);
-      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.11);
-    }
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .stat {
-      border: 1px solid rgba(203, 215, 232, 0.74);
-      border-radius: 18px;
-      padding: 15px;
-      background: rgba(255, 255, 255, 0.64);
-    }
-
-    .stat strong {
-      display: block;
-      margin-bottom: 3px;
-      color: var(--ink);
-      font-size: 24px;
-      letter-spacing: -0.04em;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
     }
 
     .section-header {
@@ -374,16 +179,29 @@
       margin: 46px 0 16px;
     }
 
+    .section-header:first-of-type {
+      margin-top: 0;
+    }
+
+    .section-header h1,
     .section-header h2 {
       margin-bottom: 7px;
-      font-size: clamp(25px, 3vw, 38px);
-      letter-spacing: -0.055em;
+      font-size: clamp(30px, 4vw, 48px);
+      letter-spacing: -0.06em;
       line-height: 1.03;
       text-wrap: balance;
     }
 
+    .section-intro,
+    .feature-copy,
+    .repo-desc,
+    .footer p {
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
     .section-intro {
-      max-width: 680px;
+      max-width: 720px;
       margin-bottom: 0;
       font-size: 15px;
     }
@@ -466,10 +284,26 @@
     }
 
     .feature-actions,
-    .repo-actions {
+    .repo-actions,
+    .pill-row {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 9px;
+      background: rgba(255, 255, 255, 0.70);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 750;
+      line-height: 1;
+      white-space: nowrap;
     }
 
     .repo-grid {
@@ -618,15 +452,9 @@
     }
 
     @media (max-width: 940px) {
-      .hero-card,
-      .sync-card,
       .feature-primary,
       .feature-secondary {
         grid-column: 1 / -1;
-      }
-
-      .hero-card {
-        min-height: auto;
       }
 
       .repo-card {
@@ -648,7 +476,6 @@
       }
 
       .nav-actions,
-      .hero-actions,
       .feature-actions,
       .repo-actions {
         width: 100%;
@@ -658,19 +485,9 @@
         width: 100%;
       }
 
-      .hero-card,
-      .sync-card,
       .feature-card {
         border-radius: 22px;
         padding: 22px;
-      }
-
-      h1 {
-        letter-spacing: -0.06em;
-      }
-
-      .stat-grid {
-        grid-template-columns: 1fr;
       }
 
       .repo-card {
@@ -713,58 +530,11 @@
     </header>
 
     <main>
-      <section class="bento" aria-labelledby="hero-title">
-        <div class="panel hero-card">
-          <p class="eyebrow">Automation · AI Workflows · Data Systems</p>
-          <h1 id="hero-title">Building practical AI automation projects.</h1>
-          <p class="hero-copy">
-            A live portfolio of projects focused on workflow automation, local-first AI tooling, document generation, and data systems. New public GitHub repositories are pulled into this page automatically.
-          </p>
-          <div class="hero-actions" aria-label="Featured calls to action">
-            <a class="button button-primary" href="#projects">View Projects</a>
-            <a class="button" href="https://github.com/manuelgb24" target="_blank" rel="noopener">Open GitHub Profile</a>
-          </div>
-          <div class="pill-row" aria-label="Core skills">
-            <span class="pill">n8n</span>
-            <span class="pill">Python</span>
-            <span class="pill">Local LLMs</span>
-            <span class="pill">MCP</span>
-            <span class="pill">PDF Automation</span>
-            <span class="pill">Data Workflows</span>
-          </div>
-        </div>
-
-        <aside class="panel sync-card" aria-labelledby="sync-title">
-          <div>
-            <p class="eyebrow">Auto-sync Portfolio</p>
-            <h2 id="sync-title">Always updated from GitHub.</h2>
-            <p>
-              The project grid below reads public repositories directly from the GitHub API. Create a new public repo, refresh this page, and it can appear automatically.
-            </p>
-          </div>
-          <ul class="sync-list">
-            <li>Filters out forks, archived repos, and the website repository.</li>
-            <li>Sorts projects by latest GitHub activity.</li>
-            <li>Shows language, update date, stars, and repository links.</li>
-          </ul>
-          <div class="stat-grid" aria-label="Portfolio stats">
-            <div class="stat">
-              <strong id="repoCount">—</strong>
-              <span>Loaded repos</span>
-            </div>
-            <div class="stat">
-              <strong>2</strong>
-              <span>Featured builds</span>
-            </div>
-          </div>
-        </aside>
-      </section>
-
       <section aria-labelledby="featured-title">
         <div class="section-header">
           <div>
-            <h2 id="featured-title">Featured Work</h2>
-            <p class="section-intro">A quick look at the two main projects behind this portfolio.</p>
+            <h1 id="featured-title">Featured Work</h1>
+            <p class="section-intro">A focused portfolio of automation, AI workflow, and data-system projects. New public GitHub repositories are added automatically in the project grid below.</p>
           </div>
         </div>
 
@@ -865,7 +635,6 @@
 
     const statusEl = document.getElementById("status");
     const gridEl = document.getElementById("repoGrid");
-    const repoCountEl = document.getElementById("repoCount");
     const yearEl = document.getElementById("year");
 
     yearEl.textContent = new Date().getFullYear();
@@ -959,7 +728,6 @@
           .filter((repo) => !EXCLUDE.has(String(repo.name || "").toLowerCase()))
           .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
 
-        repoCountEl.textContent = cleanRepos.length;
         statusEl.textContent = `${cleanRepos.length} repositories loaded`;
 
         if (cleanRepos.length === 0) {
@@ -974,7 +742,6 @@
 
         gridEl.innerHTML = cleanRepos.map(renderRepo).join("");
       } catch (error) {
-        repoCountEl.textContent = "—";
         statusEl.textContent = "Could not load repositories";
         gridEl.innerHTML = `
           <div class="error-state">
