@@ -159,6 +159,7 @@
     .button:focus-visible,
     .project-link:focus-visible,
     .repo-card:focus-within,
+    .feature-card:focus-within,
     .brand:focus-visible {
       outline: 3px solid rgba(37, 99, 235, 0.28);
       outline-offset: 4px;
@@ -221,43 +222,43 @@
 
     .featured-grid {
       display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
     }
 
     .feature-card {
       display: flex;
       min-width: 0;
-      min-height: 310px;
+      min-height: 360px;
       flex-direction: column;
       justify-content: space-between;
       gap: 22px;
       border: 1px solid rgba(203, 215, 232, 0.84);
       border-radius: var(--radius-lg);
-      padding: clamp(22px, 3vw, 34px);
-      background: var(--surface-solid);
+      padding: clamp(22px, 2.2vw, 30px);
+      background:
+        linear-gradient(135deg, rgba(37, 99, 235, 0.08), transparent 44%),
+        linear-gradient(180deg, #ffffff, #f8fbff);
       box-shadow: var(--shadow-soft);
       transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .feature-card:nth-child(2) {
+      background:
+        linear-gradient(135deg, rgba(14, 165, 233, 0.10), transparent 44%),
+        linear-gradient(180deg, #ffffff, #f8fbff);
+    }
+
+    .feature-card:nth-child(3) {
+      background:
+        linear-gradient(135deg, rgba(59, 130, 246, 0.10), transparent 44%),
+        linear-gradient(180deg, #ffffff, #f8fbff);
     }
 
     .feature-card:hover {
       transform: translateY(-2px);
       border-color: rgba(37, 99, 235, 0.32);
       box-shadow: var(--shadow);
-    }
-
-    .feature-primary {
-      grid-column: span 7;
-      background:
-        linear-gradient(135deg, rgba(37, 99, 235, 0.08), transparent 44%),
-        linear-gradient(180deg, #ffffff, #f8fbff);
-    }
-
-    .feature-secondary {
-      grid-column: span 5;
-      background:
-        linear-gradient(135deg, rgba(14, 165, 233, 0.10), transparent 44%),
-        linear-gradient(180deg, #ffffff, #f8fbff);
     }
 
     .feature-kicker {
@@ -271,7 +272,7 @@
 
     .feature-card h3 {
       margin-bottom: 12px;
-      font-size: clamp(26px, 3vw, 42px);
+      font-size: clamp(25px, 2.8vw, 36px);
       line-height: 1;
       letter-spacing: -0.055em;
       text-wrap: balance;
@@ -451,12 +452,17 @@
       100% { background-position: -120% 0; }
     }
 
-    @media (max-width: 940px) {
-      .feature-primary,
-      .feature-secondary {
-        grid-column: 1 / -1;
+    @media (max-width: 1080px) {
+      .featured-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
+      .feature-card:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 940px) {
       .repo-card {
         grid-column: span 6;
       }
@@ -498,7 +504,17 @@
         width: 100%;
       }
 
+      .featured-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card,
+      .feature-card:last-child {
+        grid-column: 1 / -1;
+      }
+
       .feature-card {
+        min-height: 0;
         border-radius: 22px;
         padding: 22px;
       }
@@ -543,6 +559,7 @@
         <a class="button" href="https://github.com/manuelgb24" target="_blank" rel="noopener">GitHub</a>
         <a class="button" href="https://manuelgb24.github.io/auto-cv-n8n/" target="_blank" rel="noopener">Auto CV Live</a>
         <a class="button" href="https://manuelgb24.github.io/n8n_local_agent/" target="_blank" rel="noopener">n8n Agent Live</a>
+        <a class="button" href="https://manuelgb24.github.io/local-ai-data-analyst/" target="_blank" rel="noopener">Local AI Live</a>
       </nav>
     </header>
 
@@ -556,7 +573,7 @@
         </div>
 
         <div class="featured-grid">
-          <article class="feature-card feature-primary">
+          <article class="feature-card">
             <div>
               <p class="feature-kicker">Featured Project</p>
               <h3>Auto CV Generator</h3>
@@ -576,7 +593,7 @@
             </div>
           </article>
 
-          <article class="feature-card feature-secondary">
+          <article class="feature-card">
             <div>
               <p class="feature-kicker">Featured Project</p>
               <h3>n8n Local Agent</h3>
@@ -593,6 +610,26 @@
             <div class="feature-actions">
               <a class="button button-primary" href="https://manuelgb24.github.io/n8n_local_agent/" target="_blank" rel="noopener">View Live Project</a>
               <a class="button" href="https://github.com/manuelgb24/n8n_local_agent" target="_blank" rel="noopener">View Source Code</a>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <div>
+              <p class="feature-kicker">Featured Project</p>
+              <h3>Local AI Data Analyst</h3>
+              <p class="feature-copy">
+                Local-first data analysis product with a web UI, local API, CLI, DuckDB queries, Ollama narration, and traceable artifacts per run.
+              </p>
+              <div class="pill-row" aria-label="Local AI Data Analyst technologies">
+                <span class="tag">DuckDB</span>
+                <span class="tag">Ollama</span>
+                <span class="tag">Local-first</span>
+                <span class="tag">Data Analyst</span>
+              </div>
+            </div>
+            <div class="feature-actions">
+              <a class="button button-primary" href="https://manuelgb24.github.io/local-ai-data-analyst/" target="_blank" rel="noopener">View Live Project</a>
+              <a class="button" href="https://github.com/manuelgb24/local-ai-data-analyst" target="_blank" rel="noopener">View Source Code</a>
             </div>
           </article>
         </div>
