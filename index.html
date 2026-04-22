@@ -10,7 +10,6 @@
     :root {
       --bg: #f6f8fc;
       --surface: rgba(255, 255, 255, 0.86);
-      --surface-solid: #ffffff;
       --ink: #0f172a;
       --muted: #526178;
       --line: #dce5f2;
@@ -25,13 +24,9 @@
       --max: 1120px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -47,9 +42,7 @@
       text-rendering: optimizeLegibility;
     }
 
-    a {
-      color: inherit;
-    }
+    a { color: inherit; }
 
     .skip-link {
       position: fixed;
@@ -110,11 +103,17 @@
       font-weight: 800;
     }
 
-    .nav-actions {
+    .nav-actions,
+    .feature-actions,
+    .repo-actions,
+    .pill-row {
       display: flex;
       flex-wrap: wrap;
-      justify-content: flex-end;
       gap: 10px;
+    }
+
+    .nav-actions {
+      justify-content: flex-end;
     }
 
     .button {
@@ -168,13 +167,9 @@
     h1,
     h2,
     h3,
-    p {
-      margin-top: 0;
-    }
+    p { margin-top: 0; }
 
-    main > section + section {
-      margin-top: 92px;
-    }
+    main > section + section { margin-top: 92px; }
 
     .section-header {
       display: flex;
@@ -282,14 +277,6 @@
       max-width: 660px;
       margin-bottom: 18px;
       font-size: 15px;
-    }
-
-    .feature-actions,
-    .repo-actions,
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
     }
 
     .tag {
@@ -404,10 +391,11 @@
       letter-spacing: -0.04em;
     }
 
-    .skeleton {
-      min-height: 248px;
-      overflow: hidden;
-    }
+    .skeleton { overflow: hidden; }
+
+    .feature-card.skeleton { min-height: 360px; }
+
+    .repo-card.skeleton { min-height: 248px; }
 
     .skeleton-line {
       height: 12px;
@@ -428,9 +416,7 @@
       margin-bottom: 10px;
     }
 
-    .skeleton-line.copy.short {
-      width: 72%;
-    }
+    .skeleton-line.copy.short { width: 72%; }
 
     .footer {
       display: flex;
@@ -443,9 +429,7 @@
       font-size: 13px;
     }
 
-    .footer p {
-      margin-bottom: 0;
-    }
+    .footer p { margin-bottom: 0; }
 
     @keyframes shimmer {
       0% { background-position: 120% 0; }
@@ -453,19 +437,11 @@
     }
 
     @media (max-width: 1080px) {
-      .featured-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .feature-card:last-child {
-        grid-column: 1 / -1;
-      }
+      .featured-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 940px) {
-      .repo-card {
-        grid-column: span 6;
-      }
+      .repo-card { grid-column: span 6; }
     }
 
     @media (max-width: 680px) {
@@ -475,17 +451,9 @@
         padding-bottom: 48px;
       }
 
-      .topbar {
-        margin-bottom: 44px;
-      }
-
-      main > section + section {
-        margin-top: 68px;
-      }
-
-      .section-header {
-        margin-bottom: 22px;
-      }
+      .topbar { margin-bottom: 44px; }
+      main > section + section { margin-top: 68px; }
+      .section-header { margin-bottom: 22px; }
 
       .topbar,
       .section-header,
@@ -496,22 +464,10 @@
 
       .nav-actions,
       .feature-actions,
-      .repo-actions {
-        width: 100%;
-      }
+      .repo-actions { width: 100%; }
 
-      .button {
-        width: 100%;
-      }
-
-      .featured-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .feature-card,
-      .feature-card:last-child {
-        grid-column: 1 / -1;
-      }
+      .button { width: 100%; }
+      .featured-grid { grid-template-columns: 1fr; }
 
       .feature-card {
         min-height: 0;
@@ -519,18 +475,14 @@
         padding: 22px;
       }
 
-      .repo-card {
-        grid-column: 1 / -1;
-      }
+      .repo-card { grid-column: 1 / -1; }
 
       .status {
         width: fit-content;
         white-space: normal;
       }
 
-      .footer {
-        margin-top: 58px;
-      }
+      .footer { margin-top: 58px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -557,9 +509,9 @@
 
       <nav class="nav-actions" aria-label="Primary links">
         <a class="button" href="https://github.com/manuelgb24" target="_blank" rel="noopener">GitHub</a>
-        <a class="button" href="https://manuelgb24.github.io/auto-cv-n8n/" target="_blank" rel="noopener">Auto CV Live</a>
-        <a class="button" href="https://manuelgb24.github.io/n8n_local_agent/" target="_blank" rel="noopener">n8n Agent Live</a>
         <a class="button" href="https://manuelgb24.github.io/local-ai-data-analyst/" target="_blank" rel="noopener">Local AI Live</a>
+        <a class="button" href="https://manuelgb24.github.io/n8n_local_agent/" target="_blank" rel="noopener">n8n Agent Live</a>
+        <a class="button" href="https://manuelgb24.github.io/auto-cv-n8n/" target="_blank" rel="noopener">Auto CV Live</a>
       </nav>
     </header>
 
@@ -568,68 +520,33 @@
         <div class="section-header">
           <div>
             <h1 id="featured-title">Featured Work</h1>
-            <p class="section-intro">A focused portfolio of automation, AI workflow, and data-system projects. New public GitHub repositories are added automatically in the project grid below.</p>
+            <p class="section-intro">A focused portfolio of automation, AI workflow, and data-system projects. Featured projects use the same newest-first GitHub ordering as the full project grid below.</p>
           </div>
         </div>
 
-        <div class="featured-grid">
-          <article class="feature-card">
+        <div class="featured-grid" id="featuredGrid" aria-label="Featured projects">
+          <article class="feature-card skeleton" aria-hidden="true">
             <div>
-              <p class="feature-kicker">Featured Project</p>
-              <h3>Auto CV Generator</h3>
-              <p class="feature-copy">
-                End-to-end workflow that turns job descriptions into tailored CVs and generates ATS-ready PDFs automatically.
-              </p>
-              <div class="pill-row" aria-label="Auto CV technologies">
-                <span class="tag">n8n</span>
-                <span class="tag">Local LLM</span>
-                <span class="tag">PDF Rendering</span>
-                <span class="tag">Prompt Logic</span>
-              </div>
-            </div>
-            <div class="feature-actions">
-              <a class="button button-primary" href="https://manuelgb24.github.io/auto-cv-n8n/" target="_blank" rel="noopener">View Live Project</a>
-              <a class="button" href="https://github.com/manuelgb24/auto-cv-n8n" target="_blank" rel="noopener">View Source Code</a>
+              <div class="skeleton-line title"></div>
+              <div class="skeleton-line copy"></div>
+              <div class="skeleton-line copy"></div>
+              <div class="skeleton-line copy short"></div>
             </div>
           </article>
-
-          <article class="feature-card">
+          <article class="feature-card skeleton" aria-hidden="true">
             <div>
-              <p class="feature-kicker">Featured Project</p>
-              <h3>n8n Local Agent</h3>
-              <p class="feature-copy">
-                Local-first AI workflow engineering agent for n8n: governance prompt, MCP, skills, local LLMs, and phase-based workflow generation.
-              </p>
-              <div class="pill-row" aria-label="n8n Local Agent technologies">
-                <span class="tag">MCP</span>
-                <span class="tag">n8n Skills</span>
-                <span class="tag">Ollama</span>
-                <span class="tag">Whisper fallback</span>
-              </div>
-            </div>
-            <div class="feature-actions">
-              <a class="button button-primary" href="https://manuelgb24.github.io/n8n_local_agent/" target="_blank" rel="noopener">View Live Project</a>
-              <a class="button" href="https://github.com/manuelgb24/n8n_local_agent" target="_blank" rel="noopener">View Source Code</a>
+              <div class="skeleton-line title"></div>
+              <div class="skeleton-line copy"></div>
+              <div class="skeleton-line copy"></div>
+              <div class="skeleton-line copy short"></div>
             </div>
           </article>
-
-          <article class="feature-card">
+          <article class="feature-card skeleton" aria-hidden="true">
             <div>
-              <p class="feature-kicker">Featured Project</p>
-              <h3>Local AI Data Analyst</h3>
-              <p class="feature-copy">
-                Local-first data analysis product with a web UI, local API, CLI, DuckDB queries, Ollama narration, and traceable artifacts per run.
-              </p>
-              <div class="pill-row" aria-label="Local AI Data Analyst technologies">
-                <span class="tag">DuckDB</span>
-                <span class="tag">Ollama</span>
-                <span class="tag">Local-first</span>
-                <span class="tag">Data Analyst</span>
-              </div>
-            </div>
-            <div class="feature-actions">
-              <a class="button button-primary" href="https://manuelgb24.github.io/local-ai-data-analyst/" target="_blank" rel="noopener">View Live Project</a>
-              <a class="button" href="https://github.com/manuelgb24/local-ai-data-analyst" target="_blank" rel="noopener">View Source Code</a>
+              <div class="skeleton-line title"></div>
+              <div class="skeleton-line copy"></div>
+              <div class="skeleton-line copy"></div>
+              <div class="skeleton-line copy short"></div>
             </div>
           </article>
         </div>
@@ -683,12 +600,35 @@
 
   <script>
     const USERNAME = "manuelgb24";
+    const FEATURED_LIMIT = 3;
     const EXCLUDE = new Set([
       `${USERNAME}.github.io`.toLowerCase()
     ]);
 
+    const PROJECT_OVERRIDES = {
+      "local-ai-data-analyst": {
+        title: "Local AI Data Analyst",
+        description: "Local-first data analysis product with a web UI, local API, CLI, DuckDB queries, Ollama narration, and traceable artifacts per run.",
+        tags: ["DuckDB", "Ollama", "Local-first", "Data Analyst"],
+        liveUrl: "https://manuelgb24.github.io/local-ai-data-analyst/"
+      },
+      "n8n_local_agent": {
+        title: "n8n Local Agent",
+        description: "Local-first AI workflow engineering agent for n8n: governance prompt, MCP, skills, local LLMs, and phase-based workflow generation.",
+        tags: ["MCP", "n8n Skills", "Ollama", "Whisper fallback"],
+        liveUrl: "https://manuelgb24.github.io/n8n_local_agent/"
+      },
+      "auto-cv-n8n": {
+        title: "Auto CV Generator",
+        description: "End-to-end workflow that turns job descriptions into tailored CVs and generates ATS-ready PDFs automatically.",
+        tags: ["n8n", "Local LLM", "PDF Rendering", "Prompt Logic"],
+        liveUrl: "https://manuelgb24.github.io/auto-cv-n8n/"
+      }
+    };
+
     const statusEl = document.getElementById("status");
     const gridEl = document.getElementById("repoGrid");
+    const featuredGridEl = document.getElementById("featuredGrid");
     const yearEl = document.getElementById("year");
 
     yearEl.textContent = new Date().getFullYear();
@@ -714,6 +654,55 @@
       }
     }
 
+    function prettifyRepoName(name) {
+      return String(name || "Untitled project")
+        .replace(/[-_]+/g, " ")
+        .replace(/\b\w/g, (letter) => letter.toUpperCase());
+    }
+
+    function projectOverride(repo) {
+      const exactName = String(repo.name || "");
+      return PROJECT_OVERRIDES[exactName] || PROJECT_OVERRIDES[exactName.toLowerCase()] || {};
+    }
+
+    function fallbackTags(repo) {
+      const tags = [];
+
+      if (repo.language) {
+        tags.push(repo.language);
+      }
+
+      if (Array.isArray(repo.topics)) {
+        tags.push(...repo.topics.slice(0, 3));
+      }
+
+      if (repo.updated_at) {
+        tags.push(`Updated ${formatDate(repo.updated_at)}`);
+      }
+
+      return tags.slice(0, 4);
+    }
+
+    function projectDetails(repo) {
+      const override = projectOverride(repo);
+      const homepage = repo.homepage ? String(repo.homepage).trim() : "";
+
+      return {
+        title: override.title || prettifyRepoName(repo.name),
+        description: override.description || repo.description || "No description yet. Open the repository to learn more about this project.",
+        tags: override.tags || fallbackTags(repo),
+        liveUrl: override.liveUrl || homepage,
+        sourceUrl: override.sourceUrl || repo.html_url || `https://github.com/${USERNAME}/${repo.name || ""}`
+      };
+    }
+
+    function renderTagList(tags) {
+      return (tags || [])
+        .filter(Boolean)
+        .map((tag) => `<span class="tag">${escapeHTML(tag)}</span>`)
+        .join("");
+    }
+
     function repoTags(repo) {
       const tags = [];
 
@@ -730,6 +719,30 @@
       }
 
       return tags.join("");
+    }
+
+    function renderFeaturedRepo(repo) {
+      const details = projectDetails(repo);
+      const liveButton = details.liveUrl
+        ? `<a class="button button-primary" href="${escapeHTML(details.liveUrl)}" target="_blank" rel="noopener">View Live Project</a>`
+        : "";
+
+      return `
+        <article class="feature-card">
+          <div>
+            <p class="feature-kicker">Featured Project</p>
+            <h3>${escapeHTML(details.title)}</h3>
+            <p class="feature-copy">${escapeHTML(details.description)}</p>
+            <div class="pill-row" aria-label="${escapeHTML(details.title)} technologies">
+              ${renderTagList(details.tags)}
+            </div>
+          </div>
+          <div class="feature-actions">
+            ${liveButton}
+            <a class="button" href="${escapeHTML(details.sourceUrl)}" target="_blank" rel="noopener">View Source Code</a>
+          </div>
+        </article>
+      `;
     }
 
     function renderRepo(repo) {
@@ -762,6 +775,18 @@
       `;
     }
 
+    function renderEmptyState() {
+      const empty = `
+        <div class="empty-state">
+          <h3>No public repositories found</h3>
+          <p class="repo-desc">Create a public GitHub repository and refresh this page. It will show up here automatically.</p>
+        </div>
+      `;
+
+      featuredGridEl.innerHTML = empty;
+      gridEl.innerHTML = empty;
+    }
+
     async function loadRepos() {
       try {
         const url = `https://api.github.com/users/${USERNAME}/repos?per_page=100&sort=updated`;
@@ -785,18 +810,20 @@
         statusEl.textContent = `${cleanRepos.length} repositories loaded`;
 
         if (cleanRepos.length === 0) {
-          gridEl.innerHTML = `
-            <div class="empty-state">
-              <h3>No public repositories found</h3>
-              <p class="repo-desc">Create a public GitHub repository and refresh this page. It will show up here automatically.</p>
-            </div>
-          `;
+          renderEmptyState();
           return;
         }
 
+        featuredGridEl.innerHTML = cleanRepos.slice(0, FEATURED_LIMIT).map(renderFeaturedRepo).join("");
         gridEl.innerHTML = cleanRepos.map(renderRepo).join("");
       } catch (error) {
         statusEl.textContent = "Could not load repositories";
+        featuredGridEl.innerHTML = `
+          <div class="error-state">
+            <h3>Featured projects did not load</h3>
+            <p class="repo-desc">GitHub may be rate-limiting this request. Refresh the page in a moment, or open the GitHub profile directly.</p>
+          </div>
+        `;
         gridEl.innerHTML = `
           <div class="error-state">
             <h3>GitHub repositories did not load</h3>
