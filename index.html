@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light" />
   <title>Manuel González Balayo | Portfolio</title>
-  <meta name="description" content="Project portfolio of Manuel González Balayo. Automation systems, AI workflows, n8n projects, and data tools." />
+  <meta name="description" content="Project portfolio of Manuel González Balayo. Automation systems, AI workflows, n8n projects, and local data tools." />
   <style>
     :root {
       --bg: #f6f8fc;
@@ -112,9 +112,7 @@
       gap: 10px;
     }
 
-    .nav-actions {
-      justify-content: flex-end;
-    }
+    .nav-actions { justify-content: flex-end; }
 
     .button {
       display: inline-flex;
@@ -351,11 +349,7 @@
       -webkit-line-clamp: 3;
     }
 
-    .repo-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
+    .repo-meta { display: flex; flex-wrap: wrap; gap: 7px; }
 
     .project-link {
       display: inline-flex;
@@ -374,8 +368,7 @@
       color: #173ea5;
     }
 
-    .empty-state,
-    .error-state {
+    .empty-state {
       grid-column: 1 / -1;
       border: 1px solid var(--line);
       border-radius: var(--radius-md);
@@ -384,39 +377,11 @@
       box-shadow: var(--shadow-soft);
     }
 
-    .empty-state h3,
-    .error-state h3 {
+    .empty-state h3 {
       margin-bottom: 8px;
       font-size: 22px;
       letter-spacing: -0.04em;
     }
-
-    .skeleton { overflow: hidden; }
-
-    .feature-card.skeleton { min-height: 360px; }
-
-    .repo-card.skeleton { min-height: 248px; }
-
-    .skeleton-line {
-      height: 12px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #e9eef7, #f7f9fc, #e9eef7);
-      background-size: 220% 100%;
-      animation: shimmer 1.3s ease-in-out infinite;
-    }
-
-    .skeleton-line.title {
-      width: 64%;
-      height: 18px;
-      margin-bottom: 20px;
-    }
-
-    .skeleton-line.copy {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-
-    .skeleton-line.copy.short { width: 72%; }
 
     .footer {
       display: flex;
@@ -430,11 +395,6 @@
     }
 
     .footer p { margin-bottom: 0; }
-
-    @keyframes shimmer {
-      0% { background-position: 120% 0; }
-      100% { background-position: -120% 0; }
-    }
 
     @media (max-width: 1080px) {
       .featured-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -468,20 +428,9 @@
 
       .button { width: 100%; }
       .featured-grid { grid-template-columns: 1fr; }
-
-      .feature-card {
-        min-height: 0;
-        border-radius: 22px;
-        padding: 22px;
-      }
-
+      .feature-card { min-height: 0; border-radius: 22px; padding: 22px; }
       .repo-card { grid-column: 1 / -1; }
-
-      .status {
-        width: fit-content;
-        white-space: normal;
-      }
-
+      .status { width: fit-content; white-space: normal; }
       .footer { margin-top: 58px; }
     }
 
@@ -520,33 +469,53 @@
         <div class="section-header">
           <div>
             <h1 id="featured-title">Featured Work</h1>
-            <p class="section-intro">A focused portfolio of automation, AI workflow, and data-system projects. Featured projects use the same newest-first GitHub ordering as the full project grid below.</p>
+            <p class="section-intro">A focused portfolio of automation, AI workflow, and data-system projects. These curated cards are rendered in the HTML first, then GitHub data can enhance the page when the API is available.</p>
           </div>
         </div>
 
         <div class="featured-grid" id="featuredGrid" aria-label="Featured projects">
-          <article class="feature-card skeleton" aria-hidden="true">
+          <article class="feature-card">
             <div>
-              <div class="skeleton-line title"></div>
-              <div class="skeleton-line copy"></div>
-              <div class="skeleton-line copy"></div>
-              <div class="skeleton-line copy short"></div>
+              <p class="feature-kicker">Featured Project</p>
+              <h3>Local AI Data Analyst</h3>
+              <p class="feature-copy">Local-first data analysis product with a web UI, local API, CLI, DuckDB queries, Ollama narration, and traceable artifacts per run.</p>
+              <div class="pill-row" aria-label="Local AI Data Analyst technologies">
+                <span class="tag">DuckDB</span><span class="tag">Ollama</span><span class="tag">Local-first</span><span class="tag">Data Analyst</span>
+              </div>
+            </div>
+            <div class="feature-actions">
+              <a class="button button-primary" href="https://manuelgb24.github.io/local-ai-data-analyst/" target="_blank" rel="noopener">View Live Project</a>
+              <a class="button" href="https://github.com/manuelgb24/local-ai-data-analyst" target="_blank" rel="noopener">View Source Code</a>
             </div>
           </article>
-          <article class="feature-card skeleton" aria-hidden="true">
+
+          <article class="feature-card">
             <div>
-              <div class="skeleton-line title"></div>
-              <div class="skeleton-line copy"></div>
-              <div class="skeleton-line copy"></div>
-              <div class="skeleton-line copy short"></div>
+              <p class="feature-kicker">Featured Project</p>
+              <h3>n8n Local Agent</h3>
+              <p class="feature-copy">Local-first AI workflow engineering agent for n8n: governance prompt, MCP, skills, local LLMs, and phase-based workflow generation.</p>
+              <div class="pill-row" aria-label="n8n Local Agent technologies">
+                <span class="tag">MCP</span><span class="tag">n8n Skills</span><span class="tag">Ollama</span><span class="tag">Whisper fallback</span>
+              </div>
+            </div>
+            <div class="feature-actions">
+              <a class="button button-primary" href="https://manuelgb24.github.io/n8n_local_agent/" target="_blank" rel="noopener">View Live Project</a>
+              <a class="button" href="https://github.com/manuelgb24/n8n_local_agent" target="_blank" rel="noopener">View Source Code</a>
             </div>
           </article>
-          <article class="feature-card skeleton" aria-hidden="true">
+
+          <article class="feature-card">
             <div>
-              <div class="skeleton-line title"></div>
-              <div class="skeleton-line copy"></div>
-              <div class="skeleton-line copy"></div>
-              <div class="skeleton-line copy short"></div>
+              <p class="feature-kicker">Featured Project</p>
+              <h3>Auto CV Generator</h3>
+              <p class="feature-copy">End-to-end workflow that turns job descriptions into tailored CVs and generates ATS-ready PDFs automatically.</p>
+              <div class="pill-row" aria-label="Auto CV Generator technologies">
+                <span class="tag">n8n</span><span class="tag">Local LLM</span><span class="tag">PDF Rendering</span><span class="tag">Prompt Logic</span>
+              </div>
+            </div>
+            <div class="feature-actions">
+              <a class="button button-primary" href="https://manuelgb24.github.io/auto-cv-n8n/" target="_blank" rel="noopener">View Live Project</a>
+              <a class="button" href="https://github.com/manuelgb24/auto-cv-n8n" target="_blank" rel="noopener">View Source Code</a>
             </div>
           </article>
         </div>
@@ -557,35 +526,52 @@
           <div>
             <h2 id="projects-title">All GitHub Projects</h2>
             <p class="section-intro">
-              This section is generated automatically from public GitHub repositories. New projects appear here after they are created on GitHub and the page is refreshed.
+              Curated projects are shown by default so the portfolio never appears empty. When GitHub's public API is available, this grid refreshes as a progressive enhancement.
             </p>
           </div>
-          <div class="status" id="status" role="status" aria-live="polite">Loading repositories…</div>
+          <div class="status" id="status" role="status" aria-live="polite">Showing curated projects</div>
         </div>
 
         <div class="repo-grid" id="repoGrid" aria-label="GitHub repositories">
-          <article class="repo-card skeleton" aria-hidden="true">
+          <article class="repo-card">
             <div>
-              <div class="skeleton-line title"></div>
-              <div class="skeleton-line copy"></div>
-              <div class="skeleton-line copy"></div>
-              <div class="skeleton-line copy short"></div>
+              <div class="repo-top"><h3 translate="no">local-ai-data-analyst</h3></div>
+              <p class="repo-desc">Local-first AI data analyst with DuckDB, Ollama, web UI, local API, CLI, and traceable run artifacts.</p>
+            </div>
+            <div>
+              <div class="repo-meta" aria-label="Repository metadata"><span class="tag">Python</span><span class="tag">DuckDB</span><span class="tag">Ollama</span></div>
+              <div class="repo-actions" style="margin-top: 16px;">
+                <a class="project-link" href="https://github.com/manuelgb24/local-ai-data-analyst" target="_blank" rel="noopener">Open Repository</a>
+                <a class="project-link" href="https://manuelgb24.github.io/local-ai-data-analyst/" target="_blank" rel="noopener">Open Live Site</a>
+              </div>
             </div>
           </article>
-          <article class="repo-card skeleton" aria-hidden="true">
+
+          <article class="repo-card">
             <div>
-              <div class="skeleton-line title"></div>
-              <div class="skeleton-line copy"></div>
-              <div class="skeleton-line copy"></div>
-              <div class="skeleton-line copy short"></div>
+              <div class="repo-top"><h3 translate="no">n8n_local_agent</h3></div>
+              <p class="repo-desc">Local-first AI workflow engineering agent for n8n with governance, MCP, skills, and local model workflows.</p>
+            </div>
+            <div>
+              <div class="repo-meta" aria-label="Repository metadata"><span class="tag">n8n</span><span class="tag">MCP</span><span class="tag">Ollama</span></div>
+              <div class="repo-actions" style="margin-top: 16px;">
+                <a class="project-link" href="https://github.com/manuelgb24/n8n_local_agent" target="_blank" rel="noopener">Open Repository</a>
+                <a class="project-link" href="https://manuelgb24.github.io/n8n_local_agent/" target="_blank" rel="noopener">Open Live Site</a>
+              </div>
             </div>
           </article>
-          <article class="repo-card skeleton" aria-hidden="true">
+
+          <article class="repo-card">
             <div>
-              <div class="skeleton-line title"></div>
-              <div class="skeleton-line copy"></div>
-              <div class="skeleton-line copy"></div>
-              <div class="skeleton-line copy short"></div>
+              <div class="repo-top"><h3 translate="no">auto-cv-n8n</h3></div>
+              <p class="repo-desc">Workflow that transforms job descriptions into tailored CV content and generates ATS-ready PDFs automatically.</p>
+            </div>
+            <div>
+              <div class="repo-meta" aria-label="Repository metadata"><span class="tag">n8n</span><span class="tag">PDF</span><span class="tag">Automation</span></div>
+              <div class="repo-actions" style="margin-top: 16px;">
+                <a class="project-link" href="https://github.com/manuelgb24/auto-cv-n8n" target="_blank" rel="noopener">Open Repository</a>
+                <a class="project-link" href="https://manuelgb24.github.io/auto-cv-n8n/" target="_blank" rel="noopener">Open Live Site</a>
+              </div>
             </div>
           </article>
         </div>
@@ -594,7 +580,7 @@
 
     <footer class="footer">
       <p>© <span id="year"></span> Manuel González Balayo. Built as a single-file portfolio.</p>
-      <p>Projects update from GitHub automatically.</p>
+      <p>Curated projects render first; GitHub data enhances when available.</p>
     </footer>
   </div>
 
@@ -746,12 +732,13 @@
     }
 
     function renderRepo(repo) {
-      const name = escapeHTML(repo.name || "Untitled project");
-      const description = escapeHTML(repo.description || "No description yet. Open the repository to learn more about this project.");
-      const repoUrl = escapeHTML(repo.html_url || `https://github.com/${USERNAME}`);
-      const homepage = repo.homepage ? String(repo.homepage).trim() : "";
-      const homepageLink = homepage
-        ? `<a class="project-link" href="${escapeHTML(homepage)}" target="_blank" rel="noopener">Open Live Site</a>`
+      const details = projectDetails(repo);
+      const name = escapeHTML(repo.name || details.title || "Untitled project");
+      const description = escapeHTML(repo.description || details.description || "No description yet. Open the repository to learn more about this project.");
+      const repoUrl = escapeHTML(details.sourceUrl || repo.html_url || `https://github.com/${USERNAME}`);
+      const liveUrl = details.liveUrl || (repo.homepage ? String(repo.homepage).trim() : "");
+      const homepageLink = liveUrl
+        ? `<a class="project-link" href="${escapeHTML(liveUrl)}" target="_blank" rel="noopener">Open Live Site</a>`
         : "";
 
       return `
@@ -764,7 +751,7 @@
           </div>
           <div>
             <div class="repo-meta" aria-label="Repository metadata">
-              ${repoTags(repo)}
+              ${repoTags(repo) || renderTagList(details.tags)}
             </div>
             <div class="repo-actions" style="margin-top: 16px;">
               <a class="project-link" href="${repoUrl}" target="_blank" rel="noopener">Open Repository</a>
@@ -775,16 +762,8 @@
       `;
     }
 
-    function renderEmptyState() {
-      const empty = `
-        <div class="empty-state">
-          <h3>No public repositories found</h3>
-          <p class="repo-desc">Create a public GitHub repository and refresh this page. It will show up here automatically.</p>
-        </div>
-      `;
-
-      featuredGridEl.innerHTML = empty;
-      gridEl.innerHTML = empty;
+    function keepCuratedFallback(message = "Showing curated projects") {
+      statusEl.textContent = message;
     }
 
     async function loadRepos() {
@@ -807,32 +786,17 @@
           .filter((repo) => !EXCLUDE.has(String(repo.name || "").toLowerCase()))
           .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
 
-        statusEl.textContent = `${cleanRepos.length} repositories loaded`;
-
         if (cleanRepos.length === 0) {
-          renderEmptyState();
+          keepCuratedFallback("Showing curated projects");
           return;
         }
 
         featuredGridEl.innerHTML = cleanRepos.slice(0, FEATURED_LIMIT).map(renderFeaturedRepo).join("");
         gridEl.innerHTML = cleanRepos.map(renderRepo).join("");
+        statusEl.textContent = `${cleanRepos.length} repositories loaded from GitHub`;
       } catch (error) {
-        statusEl.textContent = "Could not load repositories";
-        featuredGridEl.innerHTML = `
-          <div class="error-state">
-            <h3>Featured projects did not load</h3>
-            <p class="repo-desc">GitHub may be rate-limiting this request. Refresh the page in a moment, or open the GitHub profile directly.</p>
-          </div>
-        `;
-        gridEl.innerHTML = `
-          <div class="error-state">
-            <h3>GitHub repositories did not load</h3>
-            <p class="repo-desc">GitHub may be rate-limiting this request. Refresh the page in a moment, or open the GitHub profile directly.</p>
-            <div class="repo-actions" style="margin-top: 16px;">
-              <a class="button button-primary" href="https://github.com/${USERNAME}" target="_blank" rel="noopener">Open GitHub Profile</a>
-            </div>
-          </div>
-        `;
+        console.warn("GitHub repository refresh failed; keeping curated project cards.", error);
+        keepCuratedFallback("Showing curated projects");
       }
     }
 
